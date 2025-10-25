@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SDG 13 – Kenaikan Permukaan Laut (WebAR)</title>
+  <!-- A-Frame & AR.js (A-Frame build) -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;" renderer="antialias: true; colorManagement: true;">
+    <a-entity camera></a-entity>
+
+    <!-- Gunakan marker default 'hiro' agar tidak perlu file .patt lokal -->
+    <a-marker preset="hiro">
+      <!-- Pulau kecil (silinder) -->
+      <a-cylinder position="0 0 0" radius="0.6" height="0.2" color="#8B5A2B"></a-cylinder>
+      <a-cone position="0 0.3 0" radius-bottom="0.5" radius-top="0.05" height="0.6" color="#228B22"></a-cone>
+      <!-- Air laut (plane transparan) - ketinggian berubah via tombol -->
+      <a-plane id="sea" position="0 0.11 0" rotation="-90 0 0" width="3" height="3" color="#1E90FF" opacity="0.6"></a-plane>
+      <!-- Garis pantai (cincin tipis) -->
+      <a-ring position="0 0.105 0" rotation="-90 0 0" radius-inner="0.62" radius-outer="0.65" color="#fef08a"></a-ring>
+
+      <!-- Teks judul -->
+      <a-text value="SDG 13: Aksi Iklim" position="0 1 0" align="center" color="#ffffff"></a-text>
+    </a-marker>
+
+    <!-- Petunjuk jika marker hilang -->
+    <a-entity position="0 1.6 -2">
+      <a-text value="Arahkan kamera ke marker HIRO" align="center"></a-text>
+    </a-entity>
+  </a-scene>
+
+  <div class="panel">
+    <b>Kenaikan Muka Air Laut</b>
+    <p>Tekan tombol untuk mensimulasikan skenario suhu global: <i>+0°C</i>, <i>+1.5°C</i>, <i>+3°C</i>.</p>
+    <div class="controls">
+      <button data-level="0">+0°C</button>
+      <button data-level="1">+1.5°C</button>
+      <button data-level="2">+3°C</button>
+    </div>
+    <div class="tips">
+      <ul id="tips"></ul>
+    </div>
+  </div>
+
+  <script src="js/ui.js"></script>
+</body>
+</html>

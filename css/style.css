@@ -1,0 +1,5 @@
+body{margin:0;overflow:hidden}
+.panel{position:fixed;left:12px;bottom:12px;background:#ffffffcc;padding:12px 14px;border-radius:14px;font-family:system-ui;max-width:80vw}
+.controls button{margin:4px 6px 0 0;padding:8px 10px;border:0;border-radius:10px;background:#0ea5e9;color:#fff}
+.controls button:active{transform:translateY(1px)}
+.tips{font-size:14px;color:#09354b}
